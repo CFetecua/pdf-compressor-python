@@ -1,69 +1,92 @@
-PDF Compression using pypdf
+¡Perfecto!
+Te voy a dar el README completo y actualizado en formato Markdown (.md), listo para copiar y pegar. 📝
 
-Overview
+# PDF Compressor
 
-This script compresses a PDF file by optimizing its content streams. It reduces the file size without significantly affecting the document quality. The script also calculates the compression percentage.
+This is a simple Python script to **compress PDF files** using **Ghostscript**.
 
-Requirements
+## Features
 
-Make sure you have Python installed and install the required package:
+- 📄 Compress any PDF file.
+- 🎚️ Choose the compression quality: `screen`, `ebook`, `printer`, or `prepress`.
+- 📉 Show the size reduction after compression.
+- 🛡️ Verify if the input file exists and if the output file was created.
 
-pip install pypdf
+## Requirements
 
-Usage
+- **Python 3**
+- **Ghostscript** installed on your system.
 
-Place the input PDF file in the same directory as the script and name it input.pdf.
+To install Ghostscript:
 
-Run the script:
+- On Ubuntu/Debian:
+  ```bash
+  sudo apt install ghostscript
+On Windows: Download Ghostscript
 
-python compress_pdf.py
+Setup
+Before running the script, give it execution permissions:
 
-Code
+chmod +x compress_pdf.py
+How to Use
+Run the script like this:
 
-import os
-from pypdf import PdfReader, PdfWriter
+./compress_pdf.py path/to/your/file.pdf
+Example:
 
-# Input and output file names
-input_pdf = "input.pdf"
-output_pdf = "output.pdf"
+./compress_pdf.py myfile.pdf
+You can also choose the compression quality:
 
-# Get the original file size
-size_before = os.path.getsize(input_pdf)
 
-# Read and write the PDF
-reader = PdfReader(input_pdf)
-writer = PdfWriter()
+./compress_pdf.py myfile.pdf --quality ebook
+Available quality options
+Option	Description
+screen	Very small size, low quality.
+ebook	Small size, good for eBooks.
+printer	Good quality for printing.
+prepress	Best quality, almost original size.
+Output
+The compressed file will be saved in the same folder.
 
-for page in reader.pages:
-    writer.add_page(page)
+The file name will have (compressed) at the end.
+Example: myfile(compressed).pdf
 
-writer.compress_content_streams()  # Optimize content streams
+After compression, you will see:
 
-with open(output_pdf, "wb") as f:
-    writer.write(f)
+📂 Original file size.
 
-# Get the new file size
-size_after = os.path.getsize(output_pdf)
+📁 Compressed file size.
 
-# Calculate reduction percentage
-reduction = ((size_before - size_after) / size_before) * 100
+📉 Percentage of size reduction.
 
-print(f"Original size: {size_before / 1024:.2f} KB")
-print(f"Compressed size: {size_after / 1024:.2f} KB")
-print(f"Reduction: {reduction:.2f}%")
+📍 Path where the compressed file was saved.
 
-Output Example
-
-Original size: 2048.00 KB
-Compressed size: 1536.00 KB
-Reduction: 25.00%
-
+Example Output
+yaml
+Copy
+Edit
+✅ Compression completed:
+📂 Original file: 10.23 MB
+📁 Compressed file: 2.34 MB
+📉 Reduction: 77.11%
+📍 Saved in: /your/path/myfile(compressed).pdf
 Notes
+If the input file does not exist, you will see an error.
 
-This method mainly optimizes content streams but does not significantly compress embedded images.
+If the output file is not created, you will also see an error.
 
-For better compression, consider using Ghostscript or additional libraries like pdf2image to resize images.
+---
 
-License
+### Resumen de lo que hicimos:
 
-This project is open-source and available under the MIT License.
+- ✅ Explicamos que primero debes hacer `chmod +x`.
+- ✅ Mostramos que puedes correrlo usando `./`.
+- ✅ Mostramos cómo cambiar la calidad con `--quality`.
+- ✅ Explicamos qué pasa si hay errores.
+- ✅ Todo en un nivel de inglés B1 (sencillo y claro).
+
+---
+
+¿Quieres que también te dé una **versión del README en español**? 🇪🇸  
+Así tendrías las dos. 🚀  
+¿O quieres que también agreguemos unos ejemplos extra, como usarlo dentro de un pequeño script bash? 🔥

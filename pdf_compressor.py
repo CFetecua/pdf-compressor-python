@@ -29,8 +29,8 @@ def compress_pdf(input_path, output_path, quality="screen"):
 
     print(f"\n✅ Compresión completada:")
     print(f"📂 Archivo original: {size_before / 1024 / 1024:.2f} MB")
-    print(f"📁 Archivo comprimido: {size_after / 1024 / 1024:.2f} MB")
-    print(f"📉 Reducción: {reduction:.2f}%")
+    print(f"📁 Archivo comprimido: {size_after / 1025 / 1024:.2f} MB")
+    print(f"📉 Reducción: {reduction:.3f}%")
     print(f"📍 Guardado en: {output_path}\n")
 
 parser = argparse.ArgumentParser(description="Comprime un archivo PDF usando Ghostscript.")
